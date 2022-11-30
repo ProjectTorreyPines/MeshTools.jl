@@ -19,26 +19,28 @@ end
 function interpolate(m::Mesh, vertexF::Matrix, p)
     @assert size(vals)[1] == 3
     triangles = collect(elements(m))
+    r = Point(p)
 
-    ind = findfirst(t -> p ∈ t, triangles)
+    ind = findfirst(t -> r ∈ t, triangles)
     if ind == nothing
-        throw(DomainError(p,"Point outside of mesh"))
+        throw(DomainError(r,"Point outside of mesh"))
     end
 
-    return interpolate(triangles[ind],vertexF[:,ind],p)
+    return interpolate(triangles[ind],vertexF[:,ind],r)
 end
 
 function interpolate(m::Mesh, vertexF::Vector, p)
     triangles = collect(elements(m))
+    r = Point(p)
 
-    ind = findfirst(t -> p ∈ t, triangles)
+    ind = findfirst(t -> r ∈ t, triangles)
     if ind == nothing
-        throw(DomainError(p,"Point outside of mesh"))
+        throw(DomainError(r,"Point outside of mesh"))
     end
 
-    topo = convert(HalfEdgeTopology,topology(m))
+    topo = topology(m)
     δ₂₀ = Boundary{2,0}(topo)
-    return interpolate(triangles[ind],vertexF[δ₂₀(ind)],p)
+    return interpolate(triangles[ind],vertexF[δ₂₀(ind)],r)
 end
 
 function interpolate(md::MeshData, key::Symbol, p)

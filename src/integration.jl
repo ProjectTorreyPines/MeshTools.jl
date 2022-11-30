@@ -75,7 +75,7 @@ end
 
 Calculate quadrature points for all elements in the mesh with n order quadrature points
 """
-function quad_points(m::Mesh, ::Val{N}) where N
+@memoize LRU(maxsize=5) function quad_points(m::Mesh, ::Val{N}) where N
     quads = NTuple{3,Float64}[]
     for (i, t) in enumerate(elements(m))
         append!(quads, quad_points(t, Val(N)))

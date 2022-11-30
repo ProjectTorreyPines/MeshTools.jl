@@ -6,6 +6,8 @@ import Gmsh
 using Meshes
 using FileIO, MeshIO
 
+using Memoize, LRUCache
+
 include("mesh.jl")
 export create_mesh
 

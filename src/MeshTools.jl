@@ -8,7 +8,10 @@ using FileIO, MeshIO
 
 include("mesh.jl")
 export create_mesh
+
+include("interpolation.jl")
+export interpolate, barycentric_coordinates
 #export integrate
-#export interpolate
+
 
 end # module MeshTools

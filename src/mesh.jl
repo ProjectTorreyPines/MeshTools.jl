@@ -3,7 +3,7 @@
 
 Create a Triangular mesh from a vector of tuples using Gmsh. Interior boundaries define holes. Returns Meshes.SimpleMesh
 """
-function create_mesh(outer::Vector{NTuple{2,T}}; inner=Vector{Vector{NTuple{2,T}}}[], outer_length=nothing, inner_lengths=nothing, spline=true, spline_inners=tuple(x->spline,length(inner))) where T
+function create_mesh(outer::Vector{NTuple{2,T}}; inner=Vector{Vector{NTuple{2,T}}}[], outer_length=nothing, inner_lengths=nothing, spline=false, spline_inners=tuple(x->spline,length(inner))) where T
     if first(outer) != last(outer)
         push!(ext,first(outer))
     end

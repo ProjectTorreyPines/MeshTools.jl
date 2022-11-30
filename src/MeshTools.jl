@@ -11,7 +11,9 @@ export create_mesh
 
 include("interpolation.jl")
 export interpolate, barycentric_coordinates
-#export integrate
+
+include("integration.jl")
+export integrate, quad_points
 
 
 end # module MeshTools

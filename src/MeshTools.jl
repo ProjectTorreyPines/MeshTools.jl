@@ -17,5 +17,7 @@ export interpolate, barycentric_coordinates
 include("integration.jl")
 export integrate, quad_points
 
+include("contour.jl")
+export contour
 
 end # module MeshTools

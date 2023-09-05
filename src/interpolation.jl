@@ -22,7 +22,7 @@ function interpolate(m::Mesh, vertexF::Matrix, p)
     r = Point(p)
 
     ind = findfirst(t -> r ∈ t, triangles)
-    if ind == nothing
+    if ind === nothing
         throw(DomainError(r,"Point outside of mesh"))
     end
 
@@ -34,7 +34,7 @@ function interpolate(m::Mesh, vertexF::Vector, p)
     r = Point(p)
 
     ind = findfirst(t -> r ∈ t, triangles)
-    if ind == nothing
+    if ind === nothing
         throw(DomainError(r,"Point outside of mesh"))
     end
 

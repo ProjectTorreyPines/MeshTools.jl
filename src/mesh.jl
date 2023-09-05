@@ -15,13 +15,13 @@ function create_mesh(outer::Vector{NTuple{2,T}}; inner=Vector{Vector{NTuple{2,T}
     end
     poly = PolyArea(outer, inner, fix=true)
 
-    if outer_length == nothing
+    if outer_length === nothing
         ol = length(poly.outer)/50
     else
         ol = outer_length
     end
 
-    if inner_lengths == nothing
+    if inner_lengths === nothing
         ils = ntuple(x->ol,length(inner))
     else
         ils = inner_lengths

@@ -4,15 +4,7 @@
 Create a Triangular mesh from a vector of tuples using Gmsh. Interior boundaries define holes. Returns Meshes.SimpleMesh
 """
 function create_mesh(outer::Vector{NTuple{2,T}}; inner=Vector{Vector{NTuple{2,T}}}[], outer_length=nothing, inner_lengths=nothing, spline=false, spline_inners=tuple(x->spline,length(inner))) where T
-    if first(outer) != last(outer)
-        push!(outer,first(outer))
-    end
 
-    for i=1:length(inner)
-        if first(inner[i]) != last(inner[i])
-            push!(inner[i],first(inner[i]))
-        end
-    end
     poly = PolyArea(outer, inner, fix=true)
 
     if outer_length === nothing

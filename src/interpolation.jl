@@ -42,9 +42,3 @@ function interpolate(m::Mesh, vertexF::Vector, p)
     δ₂₀ = Boundary{2,0}(topo)
     return interpolate(triangles[ind],vertexF[δ₂₀(ind)],r)
 end
-
-function interpolate(md::MeshData, key::Symbol, p)
-    F = getproperty(values(md,0),key)
-    m = domain(md)
-    return interpolate(m, F, p)
-end

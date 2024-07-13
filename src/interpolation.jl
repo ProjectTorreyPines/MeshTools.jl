@@ -1,3 +1,7 @@
+"""
+    barycentric_coordinates(t::Triangle, p::Point)
+
+"""
 function barycentric_coordinates(t::Triangle, p::Point)
     x, y = coordinates(p)
     (x1, y1), (x2, y2), (x3, y3) = coordinates.(vertices(t))
@@ -10,11 +14,19 @@ function barycentric_coordinates(t::Triangle, p::Point)
     return λ₁, λ₂, λ₃
 end
 
+"""
+    interpolate(t::Triangle, F::Vector, p)
+
+"""
 function interpolate(t::Triangle, F::Vector, p)
     λ₁, λ₂, λ₃ = barycentric_coordinates(t, p)
     return λ₁ * F[1] + λ₂ * F[2] + λ₃ * F[3]
 end
 
+"""
+    interpolate(m::Mesh, vertexF::Matrix, p)
+
+"""
 function interpolate(m::Mesh, vertexF::Matrix, p)
     @assert size(vals)[1] == 3
     triangles = collect(elements(m))
@@ -28,6 +40,10 @@ function interpolate(m::Mesh, vertexF::Matrix, p)
     return interpolate(triangles[ind], vertexF[:, ind], r)
 end
 
+"""
+    interpolate(m::Mesh, vertexF::Vector, p)
+
+"""
 function interpolate(m::Mesh, vertexF::Vector, p)
     triangles = collect(elements(m))
     r = Point(p)

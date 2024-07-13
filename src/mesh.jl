@@ -30,7 +30,6 @@ function create_mesh(
 end
 
 function create_mesh(poly::PolyArea, outer_length, inner_lengths::Tuple, spline::Bool, spline_inners::Tuple)
-
     debug = false
     ext = poly.outer
     interior = poly.inners
@@ -120,5 +119,6 @@ function create_mesh(poly::PolyArea, outer_length, inner_lengths::Tuple, spline:
     connect = map(m) do el
         return Meshes.connect(Tuple(indices[Tuple([p[1], p[2]])] for p in el))
     end
+
     return Meshes.SimpleMesh(points, connect)
 end

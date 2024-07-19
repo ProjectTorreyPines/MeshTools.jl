@@ -14,8 +14,8 @@ Meshes = "eacbb407-ea5a-433e-ab97-5258b1ca43fa"
 
 [compat]
 FileIO = "1"
-Gmsh = ">= 0.3"
+Gmsh = "0.3"
 LRUCache = "1"
-Memoize = ">= 0.4"
-Meshes = ">= 0.45"
-MeshIO = ">= 0.4"
+Memoize = "0.4"
+Meshes = "0.45"
+MeshIO = "0.4"

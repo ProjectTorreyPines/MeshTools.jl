@@ -53,7 +53,7 @@ Given a polygon
 calculates a set of quadrature points and weights, by splitting
 the polygon into triangles.
 returns a list of evaluation points and weights [(r,z,weight),...]
-These are normalised to calculate the average value of a function
+These are normalized to calculate the average value of a function
 over the polygon; multiply by the area to get the integral.
 n   number of quadrature points in each triangle
 currently: 1, 3 or 6
